@@ -14,7 +14,8 @@ If you already get BEARER_TOKEN, run following code in terminal:<br>
 export 'BEARER_TOKEN'='<your_bearer_token>
 ```
 <br>
-Next, customize the program. In main.py, the global variables "datapath" and "query_params" will be found. Customize these variables. 
+Next, customize the program.<br>
+In main.py, the global variables "datapath" and "query_params" will be found. Customize these variables. 
 - "datapath" defines directory collected data will be stored.
 - "query_params" details: https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-quer
   - If you want to add elements to "query_params", you need to customize the variable "columns" and the function "json2df"
