@@ -9,7 +9,7 @@ You can collect tweets full archive via TwitterAPI2 by customizing this program.
 - data will be stored as pickle files.
 
 # Usage
-## set BEARER_TOKEN
+## Set BEARER_TOKEN
 Run following code in terminal:<br>
 ```
 export 'BEARER_TOKEN'='<your_bearer_token>
