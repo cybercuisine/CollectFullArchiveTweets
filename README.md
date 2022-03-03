@@ -9,10 +9,11 @@ You can collect tweets full archive via TwitterAPI2 by customizing this program.
 - data will be stored as pickle files.
 
 # Usage
-If you already get BEARER_TOKEN, run following code in terminal:
+If you already get BEARER_TOKEN, run following code in terminal:<br>
 '''
 export 'BEARER_TOKEN'='<your_bearer_token>
 '''
+<br>
 Next, customize the program. In main.py, the global variables "datapath" and "query_params" will be found. Customize these variables. 
 - "datapath" defines directory collected data will be stored.
 - "query_params" details: https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-quer
