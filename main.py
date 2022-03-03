@@ -5,16 +5,12 @@ import gc
 import os
 import json
 
-# sample code:
-# https://github.com/twitterdev/Twitter-API-v2-sample-code/blob/main/Full-Archive-Search/full-archive-search.py
-
-
 # To set your environment variables in your terminal run the following line:
 # export 'BEARER_TOKEN'='<your_bearer_token>'
 bearer_token = os.environ.get("BEARER_TOKEN")
 search_url = "https://api.twitter.com/2/tweets/search/all"
 
-path = "<path of directory you want to save data>"
+data_path = "<path of directory you want to save data>"
 
 # Optional params: start_time,end_time,since_id,until_id,max_results,next_token,
 # expansions,tweet.fields,media.fields,poll.fields,place.fields,user.fields
@@ -74,14 +70,15 @@ class SearchTweets:
 
         return df1
 
-    def write_next_token(self, nexttoken):
+    def write_next_token(self, NextToken):
         with open(f"{self.datapath}/nextlog.txt", mode='a', encoding='utf-8') as f:
-            f.write(nexttoken)
+            f.write(NextToken)
             f.write('\n')
         with open(f"{self.datapath}/next.txt", mode='w', encoding='utf-8') as f:
-            f.write(nexttoken)
+            f.write(NextToken)
 
-    def makedata(self, filenum):
+
+    def MakeData(self, filenum):
         data = f'{self.datapath}/data{filenum}.pkl'
         print(data)
         dataframe = pd.DataFrame(columns=columns)
@@ -97,9 +94,9 @@ class SearchTweets:
 
             dataframe = pd.concat([dataframe, self.json2df(json_response)])
             if 'next_token' in json_response['meta']:
-                nextToken = json_response['meta']['next_token']
-                self.write_next_token(nextToken)
-                query_params['next_token'] = nextToken
+                next_token = json_response['meta']['next_token']
+                self.write_next_token(next_token)
+                query_params['next_token'] = next_token
             else:
                 dataframe.to_pickle(data)
                 return False
@@ -109,14 +106,14 @@ class SearchTweets:
                 return True
 
 
-def main(datapath):
+def main(path):
     filenum = 1
-    st = SearchTweets(datapath)
-    while st.makedata(filenum):
+    st = SearchTweets(path)
+    while st.MakeData(filenum):
         filenum += 1
         gc.collect()
     print("program finished")
 
 
 if '__name__' == '__main__':
-    main(path)
+    main(data_path)
