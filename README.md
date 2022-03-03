@@ -4,7 +4,7 @@ You can collect tweets full archive via TwitterAPI2 by customizing this program.
 # Requirements
 - You should be approved Twitter Academic Research to use this program.
   - Twitter Academic Research: https://developer.twitter.com/en/products/twitter-api/academic-research
-  - However, with proper customizing, you use this program by APIs other than academic research API.
+  - However, with proper customizing, you can use this program by APIs other than academic research API.
 - You need python environments. Read the file "requirements.txt" to know details.
 - data will be stored as pickle files.
 
