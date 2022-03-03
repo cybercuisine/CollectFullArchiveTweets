@@ -17,8 +17,9 @@ export 'BEARER_TOKEN'='<your_bearer_token>'
 ## Customize program
 In main.py, the global variables "datapath" and "query_params" will be found. Customize these variables. 
 - "datapath" defines directory collected data will be stored.
-- "query_params" details: https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-quer
+- "query_params" details: https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-query
   - If you want to add elements to "query_params", you need to customize the variable "columns" and the function "json2df"
+- If you use APIs other than academic research, change the variables "search_url" for your API.
 
 # Citations
 https://github.com/twitterdev/Twitter-API-v2-sample-code/blob/main/Full-Archive-Search/full-archive-search.py
