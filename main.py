@@ -41,8 +41,8 @@ class SearchTweets:
         self.datapath = datapath
 
     @staticmethod
-    def connect_to_endpoint(self, url, params):
-        response = requests.request("GET", search_url, auth=bearer_oauth, params=params, timeout=(5.0, 7.0))
+    def connect_to_endpoint(url, params):
+        response = requests.request("GET", url, auth=bearer_oauth, params=params, timeout=(5.0, 7.0))
         if response.status_code != 200:
             raise Exception(response.status_code, response.text)
         return response.json()
@@ -74,7 +74,7 @@ class SearchTweets:
 
 
     def write_next_token(self, NextToken):
-        with open(f"{self.datapath}/nextlog.txt", mode='a', encoding='utf-8') as f:
+        with open(f"{self.datapath}/next_log.txt", mode='a', encoding='utf-8') as f:
             f.write(NextToken)
             f.write('\n')
         with open(f"{self.datapath}/next.txt", mode='w', encoding='utf-8') as f:
@@ -85,7 +85,6 @@ class SearchTweets:
         data = f'{self.datapath}/data{filenum}.pkl'
         print(data)
         dataframe = pd.DataFrame(columns=columns)
-        json_response = self.connect_to_endpoint(search_url, query_params)
         while True:
             try:
                 time.sleep(1)
