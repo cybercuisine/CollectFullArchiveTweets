@@ -10,7 +10,7 @@ You can collect tweets full archive via TwitterAPI2 by customizing this program.
 
 # Usage
 ## Set BEARER_TOKEN
-Run following code in terminal:<br>
+Run the following line in terminal:<br>
 ```
 export 'BEARER_TOKEN'='<your_bearer_token>
 ```
