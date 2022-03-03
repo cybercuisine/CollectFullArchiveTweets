@@ -40,13 +40,15 @@ class SearchTweets:
     def __init__(self, datapath):
         self.datapath = datapath
 
+    @staticmethod
     def connect_to_endpoint(self, url, params):
         response = requests.request("GET", search_url, auth=bearer_oauth, params=params, timeout=(5.0, 7.0))
         if response.status_code != 200:
             raise Exception(response.status_code, response.text)
         return response.json()
 
-    def json2df(self, json_response):
+    @staticmethod
+    def json2df(json_response):
         df1 = pd.DataFrame(columns=columns)
 
         for s, t in zip(json_response["data"], json_response["includes"]["users"]):
@@ -69,6 +71,7 @@ class SearchTweets:
             df1.loc[df1.shape[0], :] = res
 
         return df1
+
 
     def write_next_token(self, NextToken):
         with open(f"{self.datapath}/nextlog.txt", mode='a', encoding='utf-8') as f:
